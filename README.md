@@ -6,7 +6,7 @@ Leafletを勉強していたところ、日本語サンプルが少ないため�
 
 #デモ
 このページの最終サンプルは下記ＵＲＬより確認して下さい。
-http://office-shirado.github.io/Leaflet-Sample/
+- http://office-shirado.github.io/Leaflet-Sample/
 
 # 参考ＵＲＬ等
 Ｌｅａｆｌｅｔの本家サイト：http://leafletjs.com/
