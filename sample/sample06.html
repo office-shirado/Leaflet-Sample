@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<title>Leafletサンプル</title>
+
+<!-- Leaflet読込み -->
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+<!-- スタイル設定 -->
+<style>
+	body {padding: 0; margin: 0}
+	html, body, #map {height: 100%; width: 100%;}
+</style>
+
+<!-- JavaScript -->
+<script>
+// 背景タイル設定
+// 地理院タイル（標準地図）：変数『std』に格納
+var std = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 18,
+	opacity: 1.0
+})
+
+// 地理院タイル（淡色地図）：変数『pale』に格納
+var pale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 18,
+	opacity: 1.0
+})
+
+// 空中写真タイル設定（オーバーレイ）
+// 地理院タイル（国土画像情報（第一期：1974～1978年撮影））：変数『gazo1』に格納
+var gazo1 = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 17,
+	opacity: 1.0
+})
+
+// 地理院タイル（国土画像情報（第二期：1979～1983年撮影））：変数『gazo2』に格納
+var gazo2 = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/gazo2/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 17,
+	opacity: 1.0
+})
+
+// 地理院タイル（国土画像情報（第三期：1984～1986年撮影））：変数『gazo3』に格納
+var gazo3 = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/gazo3/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 17,
+	opacity: 1.0
+})
+
+// 地理院タイル（国土画像情報（第四期：1988～1990年撮影））：変数『gazo4』に格納
+var gazo4 = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/gazo4/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 17,
+	opacity: 1.0
+})
+
+// 地理院タイル（簡易空中写真（2004年～））：変数『airphoto』に格納
+var airphoto = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/airphoto/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 18,
+	opacity: 1.0
+})
+
+// 地理院タイル（電子国土基本図（オルソ画像））：変数『ort』に格納
+var ort = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	maxZoom: 23,
+	maxNativeZoom: 17,
+	opacity: 1.0
+})
+
+
+//背景レイヤグループ設定（ベースマップ）
+var baseMaps_GSI = {
+	"標準地図" : std,
+	"淡色地図" : pale
+};
+
+// 空中写真レイヤグループ設定（オーバーレイマップ）
+var overlayMaps_GSI = {
+	"国土画像情報（1974～1978年）"	: gazo1,
+	"国土画像情報（1979～1983年）"	: gazo2,
+	"国土画像情報（1984～1986年）"	: gazo3,
+	"国土画像情報（1988～1990年）"	: gazo4,
+	"簡易空中写真（2004年～）"	: airphoto,
+	"空中写真（2007年～）" 		: ort
+};
+
+
+// マーカー設定
+// 東京ドーム
+var Marker01 = L.marker([35.70570, 139.75186]);
+	Marker01.bindPopup('<b><a href="http://www.tokyo-dome.co.jp/" target="_blank">東京ドーム</a></b>');
+
+//日本土地家屋調査士会連合会
+var Marker02 = L.marker([35.70104, 139.75664]);
+	Marker02.bindPopup('<b><a href="http://www.chosashi.or.jp/" target="_blank">日本土地家屋調査士会連合会</a></b>');
+
+
+</script>
+
+</head>
+
+
+
+<body>
+
+<!-- マップエリア配置 -->
+<div id="map">
+
+
+<!-- マップ情報 -->
+<script>
+//マップ設定（おまじない）
+var map = L.map('map',{
+	maxZoom : 23
+});
+
+//レイヤコントロール設定（ベースマップ、オーバーレイマップ）
+var myLayerControl = L.control.layers(baseMaps_GSI, overlayMaps_GSI);
+
+
+
+// マップ表示位置設定（緯度、経度、ズームレベル）
+map.setView([35.70570, 139.75186], 17);
+
+// 地理院タイル（標準地図）追加
+std.addTo(map);
+
+// レイヤコントロール追加
+myLayerControl.addTo(map);
+
+
+// マーカー追加
+Marker01.addTo(map);	//東京ドーム
+Marker02.addTo(map);	//日調連
+
+</script>
+
+</body>
+</html>
+
