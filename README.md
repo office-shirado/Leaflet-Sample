@@ -7,27 +7,19 @@ Leafletを勉強していたところ、日本語サンプルが少ないため�
 ～　参考ＵＲＬ等　～
 
 『地理院地図 on Leaflet』
-
 http://www.shirado.jp/gis/leaflet/
-
 ※PC・スマホ・タブレットで見れます。
-
 ※AndroidはChrome推奨
-
 ※自分のところの座標（緯度経度）を調べる際に活用ください。
-
- 　中心座標の緯度経度が左下に表示されます。
+　中心座標の緯度経度が左下に表示されます。
 
 
 『地理院タイル一覧』
-
 http://portal.cyberjapan.jp/help/development/ichiran.html
-
 ※国土地理院の地理院タイル（地図・空中写真）のアドレス等を調べるにはこちらをご覧下さい。
 
 
 『Ｌｅａｆｌｅｔの本家サイト』
-
 http://leafletjs.com/
-
  ※ＡＰＩ、チュートリアルがあります。
+ 
