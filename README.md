@@ -15,7 +15,9 @@ http://www.shirado.jp/gis/leaflet/
 
 
 『地理院タイル一覧』
+
 http://portal.cyberjapan.jp/help/development/ichiran.html
+
 ※国土地理院の地理院タイル（地図・空中写真）のアドレス等を調べるにはこちらをご覧下さい。
 
 
