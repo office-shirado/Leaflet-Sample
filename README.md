@@ -21,5 +21,10 @@ Leafletを勉強していたところ、日本語サンプルが少ないため�
 
 地理院タイル一覧：http://portal.cyberjapan.jp/help/development/ichiran.html
 - 国土地理院の地理院タイル（地図・空中写真）のアドレス等を調べるにはこちらをご覧下さい。
+  
 
 
+ＴｅｒａＰａｄ：http://www.forest.impress.co.jp/library/software/terapad/
+- 高機能無料テキストエディタ
+- 私が使用しているテキストエディタです。
+- タグが色分けされたりして見やすくなります。
