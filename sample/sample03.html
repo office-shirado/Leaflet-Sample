@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<title>Leafletサンプル</title>
+
+<!-- Leaflet読込み -->
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+<!-- スタイル設定 -->
+<style>
+	body {padding: 0; margin: 0}
+	html, body, #map {height: 100%; width: 100%;}
+</style>
+
+<!-- JavaScript -->
+<script>
+// 背景タイル設定
+// 地理院タイル（標準地図）：変数『std』に格納
+var std = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+})
+
+// 地理院タイル（オルソ画像）：変数『ort』に格納
+var ort = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+	attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+})
+</script>
+
+</head>
+
+
+
+<body>
+
+<!-- マップエリア配置 -->
+<div id="map">
+
+
+<!-- マップ情報 -->
+<script>
+//マップ設定（おまじない）
+var map = L.map('map');
+
+// マップ表示位置設定（緯度、経度、ズームレベル）
+map.setView([35.70570, 139.75186], 17);
+
+// 地理院タイル（空中写真）追加
+ort.addTo(map);
+
+</script>
+
+</body>
+</html>
+
